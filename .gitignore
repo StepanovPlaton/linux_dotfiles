@@ -1,0 +1,20 @@
+/.*
+
+
+/Code/*
+/Downloads/*
+!/Downloads/Telegram Desktop
+/Downloads/Telegram Desktop/*
+/Sync/*
+/Data/*
+/Mount/*
+/Documents/*
+!*.gitkeep
+
+!.config
+!.scripts
+
+!.xinitrc
+!.bashrc
+
+!.gitignore
