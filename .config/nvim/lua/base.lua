@@ -7,10 +7,6 @@ local opt = vim.opt             -- global/buffer/windows-scoped options
 -- Главные
 -----------------------------------------------------------
 
--- Командная клавиша
-vim.keymap.set("n", " ", "<Nop>", { silent = true, remap = false })
-g.mapleader = " "
-
 -- Откллючить поддержку со старым vi
 g.nocompatible = true
 -- Не делать бекап файла
@@ -19,6 +15,8 @@ g.nowritebackup = true
 -- Кодировка по умолчанию
 g.encoding = "utf-8"
 
+-- Буфер обмена с системой (нужен xclip)
+opt.clipboard = "unnamed,unnamedplus"
 -- Разделитель на 80 символов
 opt.colorcolumn = '80'              
 -- Словари рус eng
@@ -39,16 +37,25 @@ opt.scrolloff = 10
 opt.showmatch = true
 -- Всегда показывать столбец для значков
 opt.signcolumn = "yes"
+-- Скрыть командную строку по умолчанию
+opt.cmdheight = 0
+-- Не создавать swap файл
+opt.swapfile = false
+
+-- Отключить стандартный проводник
+-- g.loaded_netrw = 1
+-- g.loaded_netrwPlugin = 1
 
 -----------------------------------------------------------
 -- Цветовая схема
 -----------------------------------------------------------
 
-opt.termguicolors = false           --  Нужно для поддежки pywal
+--  Нужно для поддежки pywal
+-- opt.termguicolors = false           
 -- Устанавливаем тему из pywal
-cmd([[
-highlight ColorColumn ctermbg=16
-]])
+-- cmd([[
+-- highlight ColorColumn ctermbg=16
+-- ]])
 
 -----------------------------------------------------------
 -- Табы и отступы
@@ -69,15 +76,15 @@ opt.tabstop = 4
 opt.smartindent = true              
 
 -- Не автокомментировать новые строки
-cmd [[au BufEnter * set fo-=c fo-=r fo-=o]] 
+cmd([[au BufEnter * set fo-=c fo-=r fo-=o]])
 
 -- Удалить маркер длинны строки для выбранных типов файлов
-cmd [[autocmd FileType text,markdown,html,xhtml,javascript setlocal cc=0]]
+cmd([[autocmd FileType text,markdown,html,xhtml,javascript setlocal cc=0]])
 
 -- 2 пробела для выбранных типов файлов
-cmd [[
+cmd([[
 autocmd FileType xml,html,xhtml,css,scss,javascript,lua,yaml,htmljinja setlocal shiftwidth=2 tabstop=2
-]]
+]])
 
 -----------------------------------------------------------
 -- Полезные фишки
@@ -92,6 +99,6 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 exec([[
 augroup YankHighlight
 autocmd!
-autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=300}
 augroup end
 ]], false)

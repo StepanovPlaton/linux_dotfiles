@@ -19,6 +19,12 @@ bspc config focused_border_color "$color2"
 
 bspc config top_padding 30 
 
+telegram-desktop -startintray &
+bspc rule -a TelegramDesktop desktop='^5'
+
+bspc rule -a St_float state=pseudo_tiled
+st -c St_float -e /bin/bash -c "ufetch && /bin/bash" &
+
 # bspc rule -a Gimp desktop='^8' state=floating follow=on
 # bspc rule -a Chromium desktop='^2'
 # bspc rule -a mplayer2 state=floating

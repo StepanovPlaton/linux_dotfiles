@@ -3,13 +3,16 @@ left: run bspc node -f west
 up: run bspc node -f north 
 down: run bspc node -f south
 
-git commit: run git commit -m "`date`+'%Y-%m-%d %H:%M:%S'"
-git push: run git push
-git commit and push: run git commit -m "`date`+'%Y-%m-%d %H:%M:%S'" \
+git status: type git status 
+git commit: type git commit -m "`date`+'%Y-%m-%d %H:%M:%S'"
+git push: type git push
+git commit and push: type git commit -m "`date`+'%Y-%m-%d %H:%M:%S'" \
     run git push
 
 mute: run pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-power off: run export SUDOASKPASS=".scripts/dpass.sh" && sudo -A poweroff
-reboot: run export SUDOASKPASS=".scripts/dpass.sh" && sudo -A reboot
+power off: run export SUDO_ASKPASS=".scripts/dpass.sh" && sudo -A poweroff
+reboot: run export SUDO_ASKPASS=".scripts/dpass.sh" && sudo -A reboot
 
+deactivate: run pkill numen
+bye: run echo load $HOME/.config/numen/startup.phrases | numenc && echo "[R]" > ~/.config/numen/current_mode

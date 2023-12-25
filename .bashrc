@@ -17,3 +17,8 @@ alias dmenu_wal='dmenu_run -nb "$color0" -nf "$color15" -sb "$color1" -sf "$colo
 
 #export SUDO_ASKPASS=".scripts/dpass.sh"
 #alias sudo="sudo -A"
+
+alias numen_full="numen ~/.config/numen/phrases.phrases --phraselog=phrases.txt"
+
+
+export PATH="~/.scripts:$PATH"

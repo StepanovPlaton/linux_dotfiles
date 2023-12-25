@@ -1,0 +1,2 @@
+enable voice assistant: run echo load $HOME/.config/numen/phrases.phrases | numenc && echo "[W]" > ~/.config/numen/current_mode
+deactivate: run pkill numen

@@ -1,4 +1,21 @@
 #
+# Screenshots
+#
+Print
+	screenshot_dir_name="$HOME/Data/Pictures/Screen Shots/$(date +"%Y-%m-%d")"; \
+	screenshot_file_name="$(date +"%Y-%m-%d_%H%M%S")"; \
+	mkdir -p "$screenshot_dir_name"; \
+	maim -sq "$screenshot_dir_name/$screenshot_file_name".png; \
+	xclip -selection clipboard -t image/png -i "$screenshot_dir_name/$screenshot_file_name".png
+
+shift + Print
+	screenshot_dir_name="$HOME/Data/Pictures/Screen Shots/$(date +"%Y-%m-%d")"; \
+	screenshot_file_name="$(date +"%Y-%m-%d_%H%M%S")_FS"; \
+	mkdir -p "$screenshot_dir_name"; \
+	maim -q "$screenshot_dir_name/$screenshot_file_name".png; \
+	xclip -selection clipboard -t image/png -i "$screenshot_dir_name/$screenshot_file_name".png
+
+#
 # wm independent hotkeys
 #
 
