@@ -6,43 +6,6 @@ return {
     },
     opts = {}
   },
-  {
-    "williamboman/mason-null-ls.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvimtools/none-ls.nvim",
-    },
-    config = function()
-      local null_ls = require("null-ls")
-      null_ls.setup({
-        source = {
-          -- null_ls.builtins.diagnostics.eslint_d,
-          -- null_ls.builtins.code_actions.eslint_d,
-          null_ls.builtins.diagnostics.stylelint,
-          null_ls.builtins.formatting.prettier,
-          null_ls.builtins.code_actions.gitsigns,
-          null_ls.builtins.formatting.autopep8,
-          null_ls.builtins.diagnostics.pycodestyle,
-          null_ls.builtins.diagnostics.pydocstyle,
-        },
-        on_attach = function(client, bufnr)
-          if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              group = vim.api.nvim_create_augroup("LspFormatting", {}),
-              buffer = bufnr,
-              callback = function() vim.lsp.buf.format({ async = false }) end,
-            })
-          end
-        end,
-      })
-      require("mason-null-ls").setup({
-        ensure_installed = nil,
-        automatic_installation = true,
-        handlers = {}
-      })
-    end
-  },
   { 
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
@@ -53,7 +16,16 @@ return {
     keys = {
       { "<LEADER>lh", vim.lsp.buf.hover },
       { "<LEADER>lr", vim.lsp.buf.rename },
-      { "<LEADER>lf", function() vim.lsp.buf.format({async = true}) end},
+      { "<LEADER>lf", function()
+          vim.lsp.buf.format({ 
+            async = true,
+            bufnr = bufnr,
+            filter = function(client) 
+              return client.name == "null-ls" 
+            end
+          })
+        end 
+      },
       { "<LEADER>lgr", vim.lsp.buf.references },
       { "<LEADER>lgi", vim.lsp.buf.implementation },
       { "<LEADER>lsh", vim.lsp.buf.signature_help },
@@ -91,24 +63,60 @@ return {
       
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       for _, server in pairs(LSP_SERVERS) do
-        if server ~= "tsserver" then 
-          lspconfig[server].setup(
-            {
-              capabilities = capabilities,
-              on_attach = on_attach,
-            }
-          )
-        end
+        lspconfig[server].setup(
+          {
+            capabilities = capabilities,
+            on_attach = on_attach,
+          }
+        )
       end
-      lspconfig["tsserver"].setup(
-        {
-          capabilities = capabilities,
-          on_attach = function(client)
-            client.resolved_capabilities.document_formatting = false 
-          end,
-        }
-      )
     end,
+  },
+  {
+    "nvimtools/none-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "williamboman/mason-null-ls.nvim",
+    },
+    config = function()
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        source = {
+          -- null_ls.builtins.diagnostics.eslint_d,
+          -- null_ls.builtins.code_actions.eslint_d,
+          null_ls.builtins.diagnostics.stylelint,
+          null_ls.builtins.formatting.prettier,
+          null_ls.builtins.code_actions.gitsigns,
+          null_ls.builtins.formatting.autopep8,
+          null_ls.builtins.diagnostics.pycodestyle,
+          null_ls.builtins.diagnostics.pydocstyle,
+        },
+        on_attach = function(client, bufnr)
+          if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              group = vim.api.nvim_create_augroup("LspFormatting", {}),
+              buffer = bufnr,
+              callback = function() 
+                vim.lsp.buf.format({ 
+                  async = false,
+                  bufnr = bufnr,
+                  filter = function(client) 
+                    return client.name == "null-ls" 
+                  end
+                })
+              end,
+            })
+          end
+        end,
+      })
+      require("mason-null-ls").setup({
+        ensure_installed = nil,
+        automatic_installation = true,
+        handlers = {}
+      })
+    end
   },
   {
     "j-hui/fidget.nvim",

@@ -48,4 +48,14 @@ return {
   --     require("vscode").load("dark")
   --   end
   -- }
+
+  -- {
+  --   "sainnhe/everforest",
+  --   config = function()
+  --     vim.g.everforest_background = "hard"
+  --     vim.o.background = "dark"
+  --     -- require("everforest")
+  --     vim.cmd([[colorscheme everforest]])
+  --   end
+  -- }
 }
