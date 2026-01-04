@@ -1,7 +1,7 @@
 return {
-  {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
 			{ "<LEADER>tt", "<CMD>TroubleToggle<CR>" },
 			{ "<LEADER>tc", "<CMD>TroubleClose<CR>" },
@@ -15,6 +15,6 @@ return {
 			{ "<LEADER>tlr", "<CMD>TroubleToggle lsp_references<CR>" },
 			{ "<LEADER>tld", "<CMD>TroubleToggle lsp_definitions<CR>" },
 			{ "<LEADER>tltd", "<CMD>TroubleToggle lsp_type_definitions<CR>" },
-		}
-  }
+		},
+	},
 }

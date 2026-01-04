@@ -3,12 +3,16 @@
 
 /Code/*
 /Downloads/*
+/Games/*
+
 !/Downloads/Telegram Desktop
 /Downloads/Telegram Desktop/*
+
 /Sync/*
 /Data/*
 /Mount/*
 /Documents/*
+
 !*.gitkeep
 
 !.config

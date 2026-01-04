@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ip route show default 2>/dev/null | awk '/default/ {print $5; exit}'
