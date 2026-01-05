@@ -14,7 +14,10 @@
 /Downloads/Telegram Desktop/*
 
 /Sync/*
+
 /Data/*
+!/Data/*-packages.txt
+
 /Mount/*
 !/Mount/DwarfStorage
 /Mount/DwarfStorage/*
