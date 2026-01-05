@@ -1,0 +1,18 @@
+#!/bin/env bash
+
+colors_path=$HOME/.cache/wal/colors.sh
+
+vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk -F "Volume: " '{print $2}')
+vol=$(echo "$vol * 100" | bc)
+vol=$(printf "%.0f" "$vol")
+
+mic=$(wpctl get-volume @DEFAULT_SOURCE@ | awk -F "Volume: " '{print $2}')
+mic=$(echo "$mic * 100" | bc)
+mic=$(printf "%.0f" "$mic")
+
+
+if [ -f "$colors_path" ]; then
+  source $colors_path
+  echo "^b$color1^^c$color0^  $vol ^d^^b$color8^^c$color0^  $mic ^d^"
+fi
+

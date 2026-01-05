@@ -1,3 +1,0 @@
-#! /bin/bash
-
-curl -s -H "Accept-language: ru" wttr.in/Samara?Mm

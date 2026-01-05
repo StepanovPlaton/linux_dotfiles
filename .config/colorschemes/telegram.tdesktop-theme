@@ -1,0 +1,61 @@
+
+// Основное окно
+windowBg: #0d0e0f;
+windowFg: #ebdbb2;
+windowBgOver: #665c54;
+windowBgRipple: #0d0e0f;
+windowFgOver: #ebdbb2;
+windowSubTextFg: #a89984;
+windowBoldFg: #ebdbb2;
+windowActiveTextFg: #fabd2f;
+
+// --- ВАШИ СООБЩЕНИЯ (Исходящие) ---
+// Делаем их темными, почти как фон, но с заметной границей или чуть светлее
+msgOutBg: #0d0e0f; 
+msgOutBgSelected: #665c54;
+msgOutTxtFg: #ebdbb2;
+msgOutServiceFg: #fabd2f;
+msgOutShadow: #00000000;
+
+// Входящие сообщения
+msgInBg: #0d0e0f;
+msgInBgSelected: #665c54;
+msgInTxtFg: #ebdbb2;
+msgInShadow: #00000000;
+
+// --- МЕНЮ И ВЫПАДАЮЩИЕ СПИСКИ ---
+// Исправляем отсутствие выделения в меню
+menuBg: #0d0e0f;
+menuBgOver: #665c54;
+menuBgRipple: #0d0e0f;
+menuFg: #ebdbb2;
+menuFgOver: #fbf1c7;
+menuIconFg: #a89984;
+menuIconFgOver: #fabd2f;
+
+// Списки (выбор в настройках, контакты)
+listBgOver: #665c54;
+listFgOver: #ebdbb2;
+
+// Боковая панель (Список чатов)
+dialogsBg: #0d0e0f;
+dialogsBgOver: #665c54;
+dialogsBgActive: #665c54;
+dialogsNameFg: #ebdbb2;
+dialogsTextFg: #a89984;
+dialogsUnreadBg: #fabd2f;
+dialogsUnreadFg: #0d0e0f;
+
+// Поле ввода
+historyComposeAreaBg: #0d0e0f;
+historyComposeIconFg: #a89984;
+historyComposeIconFgOver: #fabd2f;
+
+// Скроллбар
+scrollBarBg: #0d0e0f80;
+scrollBarBgOver: #665c54;
+
+// Кнопки
+activeButtonBg: #fabd2f;
+activeButtonBgOver: #83a598;
+activeButtonFg: #0d0e0f;

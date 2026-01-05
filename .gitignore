@@ -11,11 +11,19 @@
 /Sync/*
 /Data/*
 /Mount/*
+!/Mount/DwarfStorage
+/Mount/DwarfStorage/*
 
 !*.gitkeep
 
 !.config
 !.scripts
+
+!.local
+.local/*
+!.local/share
+.local/share/*
+!.local/share/fonts
 
 !.xinitrc
 !.bashrc

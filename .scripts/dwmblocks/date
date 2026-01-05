@@ -1,0 +1,6 @@
+#!/bin/env bash
+colors_path=$HOME/.cache/wal/colors.sh
+if [ -f "$colors_path" ]; then
+  source $colors_path
+  echo "^c$color0^^b$color1^$(date +" %d") ^d^^c$color0^^b$color8^$(date +" %I:%M%p") ^d^ ^d^ "
+fi
