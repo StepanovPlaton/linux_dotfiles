@@ -2,6 +2,11 @@
 
 
 /Code/*
+!/Code/Source/
+/Code/Source/*
+!/Code/Source/dmenu
+!/Code/Source/st
+
 /Downloads/*
 /Games/*
 

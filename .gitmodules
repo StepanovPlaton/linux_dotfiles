@@ -1,0 +1,6 @@
+[submodule "Code/Source/dmenu"]
+	path = Code/Source/dmenu
+	url = https://github.com/StepanovPlaton/dmenu
+[submodule "Code/Source/st"]
+	path = Code/Source/st
+	url = https://github.com/StepanovPlaton/st
